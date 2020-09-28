@@ -1,36 +1,36 @@
 function myName() {
   // Create a variable called myName
+  let myName = "Sean Russell";
   return myName;
 }
 
 function setTeachersNames(teachersName) {
   // change code below this line so that we can set the variable.
-  const teachers = null;
-  teachers = teachersName; //  <- this is invalid because teachers is a const. How can we fix this?
+  let teachers = teachersName; //  <- this is invalid because teachers is a const. How can we fix this?
 
   return teachers;
 }
 
 /*** return the sum of both arguments  ***/
 function add(a, b) {
-  let sum;
+  let sum = a + b;
 
   return sum;
 }
 
 /*** Using the increment operator, add a year to the argument and make me older */
 function ageMeByAYear(age) {
-  return age;
+  return ++age;
 }
 
 /*** Using the decrement operator make me age decrement by a year  ***/
 function makeMeYoungerByAYear(age) {
-  return age;
+  return --age;
 }
 
 /** Take the argument that will be a string and return an integer  */
 function convertStringToInt(str) {
-  let int;
+  let int = Number(str);
   return int;
 }
 
@@ -44,14 +44,16 @@ function convertStringToInt(str) {
  *
  */
 function getTheCharacterPosition(name, letter) {
-  let characterPosition;
+  let characterPosition = name.indexOf(letter);
   return characterPosition;
 }
+
+//console.log(getTheCharacterPosition(myName(), "e"));
 
 /** Take the argument and return the length of the argument */
 
 function stringLength(str) {
-  let strLength;
+  let strLength = str.length;
 
   return strLength;
 }
@@ -64,10 +66,12 @@ function stringLength(str) {
  */
 
 function getLastCharacter(str) {
-  let lastCharacter;
+  let lastCharacter = str[str.length - 1];
 
   return lastCharacter;
 }
+
+//console.log(getLastCharacter(myName()));
 
 /** Return the last part of a place name
  *
@@ -82,10 +86,14 @@ function getLastCharacter(str) {
  */
 
 function getLastWordInPlaceName(place) {
-  let newPlace;
+  // Get the index of the seperator, use that to slice the string
+  let sepCharIndex = place.indexOf(" ");
+  let newPlace = place.substring(sepCharIndex + 1);
 
   return newPlace;
 }
+
+//console.log(getLastWordInPlaceName("New York"));
 
 /***
  *  Using Conditonal logic compare both arguments and return the largest argument
@@ -94,6 +102,11 @@ function getLastWordInPlaceName(place) {
 
 function getLargerNumber(arg1, arg2) {
   let largestNumber;
+  if (arg1 >= arg2) {
+    largestNumber = arg1;
+  } else {
+    largestNumber = arg2;
+  }
 
   return largestNumber;
 }
@@ -111,9 +124,14 @@ function getLargerNumber(arg1, arg2) {
  */
 
 function replaceLastName(fullName, newLastName) {
-  let newFullName;
+  let oldLastName = getLastWordInPlaceName(fullName);
+  // replace oldLastName with newLastName
+  let newFullName = fullName.replace(oldLastName, newLastName);
+
   return newFullName;
 }
+
+//console.log(replaceLastName(myName(), "New"));
 
 /***
  *  Capitalize the first letter in a last name
@@ -121,10 +139,15 @@ function replaceLastName(fullName, newLastName) {
  */
 
 function capitalizeLastName(fullName) {
-  let capitalizeLastName;
+  let oldLastName = getLastWordInPlaceName(fullName);
+  let newLastName = oldLastName[0].toUpperCase() + oldLastName.slice(1);
+  //console.log(newLastName);
+  let capitalizeLastName = replaceLastName(fullName, newLastName);
 
   return capitalizeLastName;
 }
+
+//console.log(capitalizeLastName("Sean russell"));
 
 /**
  * Ignore me. This is for the tests
