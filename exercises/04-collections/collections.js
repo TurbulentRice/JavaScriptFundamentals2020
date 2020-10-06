@@ -5,7 +5,7 @@
 
 const accessingAnItem = () => {
   const cars = ["BMW", "Honda", "Civic"]; // Do not change this line
-  // Write code here
+  return cars[0];
 };
 
 /**
@@ -15,9 +15,8 @@ const accessingAnItem = () => {
  */
 
 const addToAnArray = () => {
-  const languages = ["JavaScript"]; // Do not change this line
-
-  /* Add three more items to the "languages" array here */
+  let languages = ["JavaScript"]; // Do not change this line
+  languages.push("Python", "C++", "R");
 
   return languages;
 };
@@ -30,7 +29,7 @@ const addToAnArray = () => {
  * @example combineArray(['Japan','China','India'], ['USA','UK']) // ['Japan','China','India','USA','UK']
  **/
 
-const combineArray = (array1, array2) => {};
+const combineArray = (array1, array2) => [...array1, ...array2];
 
 /***
  * Create an array that contain two functions:
@@ -42,7 +41,10 @@ const combineArray = (array1, array2) => {};
  * @example createArrayOfFunctions()[1](10, 10) // 0;
  */
 
-const createArrayOfFunctions = () => {};
+const createArrayOfFunctions = () => [
+  (add1, add2) => add1 + add2,
+  (sub1, sub2) => sub1 - sub2,
+];
 
 /**
  * Loop through the array using a for loop (or for ... of loop) and return the highest number
@@ -53,7 +55,13 @@ const createArrayOfFunctions = () => {};
  * @example highestNumber([-1, -5, -4]) // -1
  *
  **/
-const highestNumber = (numbers) => {};
+const highestNumber = (numbers) => {
+  let highest = -Infinity;
+  for (let i of numbers) {
+    i > highest && (highest = i);
+  }
+  return highest;
+};
 
 /**
  * Given an array of objects, where each object has an ID,
@@ -91,7 +99,16 @@ const highestNumber = (numbers) => {};
  * Please note, the loop never iterates over the last item, because we found our object. There is no need to continue looping.
  */
 
-const findAndAbort = (arr, id) => {};
+const findAndAbort = (arr, id) => {
+  let match;
+  for (let person of arr) {
+    if (person.id === id) {
+      match = person;
+      break;
+    }
+  }
+  return match;
+};
 
 /**
  * Check to see if a string is a palindrome.
@@ -103,7 +120,7 @@ const findAndAbort = (arr, id) => {};
  * @example isPalindrome("nope"); // false
  */
 
-const isPalindrome = (str) => {};
+const isPalindrome = (str) => str === str.split("").reverse().join("");
 
 /**
  * Use sets to remove duplicate elements from an array
@@ -115,7 +132,7 @@ const isPalindrome = (str) => {};
  * removeDuplicates(); // [2, 3, 4, 5, 6, 7, 32]
  */
 
-const removeDuplicates = (numbers) => {};
+const removeDuplicates = (numbers) => [...new Set(numbers)];
 
 /**
  * Make an object "myDog" that represents a dog. It should contain the properties:
@@ -125,7 +142,12 @@ const removeDuplicates = (numbers) => {};
  * @return {object}
  */
 
-const createDogObject = () => {};
+const createDogObject = () => ({
+  name: "Sugar",
+  legs: 4,
+  tails: 1,
+  owners: ["Sean", "Emily"],
+});
 
 /**
  * Return the value for hat inside of the clothes object
@@ -140,7 +162,7 @@ const accessAnItemObject = () => {
     shirt: "jersey",
     shoes: "cleats",
   };
-  // Write code here
+  return clothes.hat;
 };
 
 /**
@@ -162,7 +184,18 @@ const updateStudentObject = () => {
     lastName: "",
     skills: [],
   };
-  // Write code here
+  // // Imperative way: Update property values, then return the result
+  // student.firstName = "Sean";
+  // student.lastName = "Russell";
+  // student.skills.push("photography", "guitar", "watching movies");
+  // return student;
+
+  // Functional way: Return the result of assigning new property values
+  return Object.assign(student, {
+    firstName: "Sean",
+    lastName: "Russell",
+    skills: ["photography", "guitar", "watching movies"],
+  });
 };
 
 /**
@@ -179,8 +212,7 @@ const returnObjectValues = () => {
     owner: "Stacy",
     name: "Rocket",
   };
-  // Add code here
-  // HINT: you need to return an array
+  return Object.values(dog);
 };
 
 /**
@@ -194,7 +226,7 @@ const returnObjectValues = () => {
  * combineObject(obj1, obj2); // { firstName: "Clark", lastName: "Kent" }
  */
 
-const combineObject = (obj1, obj2) => {};
+const combineObject = (obj1, obj2) => ({ ...obj1, ...obj2 });
 
 module.exports = {
   addToAnArray,
