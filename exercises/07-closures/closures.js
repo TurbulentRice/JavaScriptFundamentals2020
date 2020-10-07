@@ -14,7 +14,7 @@
  *
  * (This is technically not a closure. It is here to prepare you for the next problems.)
  */
-const greeter = () => {};
+const greeter = () => ({ hello: (name) => `Hello ${name}!` });
 
 /**
  * As a programmer, I would like to be able to call on a function that returns an object that will allow me to
@@ -49,6 +49,12 @@ const greeter = () => {};
 
 const groceryList = () => {
   let groceryItems = [];
+
+  return {
+    add: (item) => groceryItems.push(item),
+    remove: (index) => groceryItems.splice(index),
+    getList: () => groceryItems,
+  };
 };
 
 /**
@@ -72,6 +78,14 @@ const calculator = () => {
    * that should return the value of "sum" above.
    * @returns {number} the value of sum
    */
+
+  let sum = 0;
+  return {
+    addNum: (num) => {
+      sum += num;
+    },
+    getSum: () => sum,
+  };
 };
 
 /**
@@ -100,7 +114,27 @@ const calculator = () => {
  * guessRound2(1); // "No more guesses. The answer was 0"
  */
 
-const guessingGame = (numberOfRounds) => {};
+const guessingGame = (numberOfRounds) => {
+  let answer = Math.floor(Math.random() * 10 + 1);
+  let guesses = 0;
+
+  return (guess) => {
+    // increment and display guess #
+    console.log(`Try number ${++guesses} of ${numberOfRounds}`);
+
+    // break out if guess counter reaches or exceeds numberOfRounds
+    if (guesses >= numberOfRounds)
+      return `No more guesses. The answer was ${answer}`;
+
+    // correct guess!
+    if (guess === answer) return "You got it!";
+
+    // too high or low
+    return guess > answer ? "You're too high!" : "You're too low!";
+  };
+};
+
+//let myGame = guessingGame(2);
 
 module.exports = {
   greeter,
