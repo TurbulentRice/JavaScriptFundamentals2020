@@ -52,7 +52,7 @@ const groceryList = () => {
 
   return {
     add: (item) => groceryItems.push(item),
-    remove: (index) => groceryItems.splice(index),
+    remove: (index) => groceryItems.splice(index, 1),
     getList: () => groceryItems,
   };
 };

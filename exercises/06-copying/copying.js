@@ -39,7 +39,7 @@ const changeEmail = (user, newEmail) => ({ ...user, email: newEmail });
  */
 //import _ from "lodash";
 const addToCart = (shoppingCart, newItem) => {
-  newShoppingCart = JSON.parse(JSON.stringify(shoppingCart));
+  const newShoppingCart = JSON.parse(JSON.stringify(shoppingCart));
   newShoppingCart.push(JSON.parse(JSON.stringify(newItem)));
   return newShoppingCart;
 };

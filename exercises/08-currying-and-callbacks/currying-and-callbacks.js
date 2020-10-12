@@ -13,7 +13,11 @@
  * @param {number} a
  * @param {number} b
  */
-const multiplier = (a, b) => {};
+const multiplier = (a, b) => {
+  if (a && b) return a * b;
+
+  return (second) => a * second;
+};
 
 /**
  * Create a function called "printer".
@@ -25,6 +29,11 @@ const multiplier = (a, b) => {};
  *  - Matina
  * @param {string} name instructor name
  */
+
+const printer = (name) => {
+  const ast = () => "*" * 10;
+  console.log(ast + name + ast);
+};
 
 /**
  * NOTE that the test will use the "printer" function that you completed in the problem above.
@@ -38,7 +47,15 @@ const multiplier = (a, b) => {};
  * // - Jamal
  * // - Matina
  */
-const printNames = (array, callback) => {};
+const printNames = (array, callback) => {
+  // // Using for/of loop
+  // for (let name of array) {
+  //   callback(name);
+  // }
+
+  // Using array.forEach()
+  array.forEach(callback);
+};
 
 /**
  * Ignore everything below this line. It is for the tests.
