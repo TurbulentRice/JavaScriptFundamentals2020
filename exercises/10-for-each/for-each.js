@@ -5,10 +5,6 @@
  * @param {function} callback
  */
 const forEach = (arr, callback) => {
-  // for (let thing of arr) {
-  //   callback(thing);
-  // }
-
   for (let i = 0; i < arr.length; i++) {
     callback(arr[i], i, arr);
   }

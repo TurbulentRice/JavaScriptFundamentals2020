@@ -16,7 +16,7 @@
 const multiplier = (a, b) => {
   if (a && b) return a * b;
 
-  return (second) => a * second;
+  return (c) => a * c;
 };
 
 /**
