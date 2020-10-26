@@ -10,3 +10,13 @@
  * 
  * Do not change the HTML unless you are instructed to do so.
  */
+const firstLI = document.querySelector('li');
+//firstLI.innerHTML = "Target"
+const myLI = document.querySelector("#myId")
+//myLI.innerHTML = "Butts"
+const allLI = document.querySelectorAll('li')
+//console.log(allLI)
+const bgWarning = document.getElementsByClassName('bg-warning')
+console.log(bgWarning)
+const nestedElems = document.querySelectorAll(".bg-success > div")
+//console.log(nestedElems)
