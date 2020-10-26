@@ -20,12 +20,11 @@ victoryDiv.textContent = "I am victorious!"
 //console.log(victoryDiv)
 
 // Last problem
-changeLastDivBtn = () => {
-  btn = document.querySelector("#last-btn");
+(function () {
+  const btn = document.querySelector("#last-btn");
   console.log(btn)
   if (btn.matches(".btn-primary")) {
     document.querySelector("#last-div").textContent = "✓ blue"
   }
-}
-changeLastDivBtn()
+})
 
