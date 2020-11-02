@@ -9,6 +9,13 @@
  * @see https://developer.mozilla.org/en-US/docs/Web/API/Window/alert
  */
 
+ // Generic function to alert on click
+ const displayAlert = (event) => alert(`You've been alerted by ${event.target.id}!`);
+
+ // Add event listener
+ const alertMeBtn = document.querySelector("#alert-me");
+ alertMeBtn.addEventListener("click", displayAlert);
+
 /**
  * Challenge 2: Disable a button that will charge a credit card.
  *
@@ -16,6 +23,15 @@
  * 1. Disable the button when it is clicked.
  * 2. Change the text to say e.g. "Loading ..." once it is clicked.
  */
+// Generic function to disable a button when clicked
+const disableButton = (event) => {
+  event.target.textContent = "Loading...";
+  event.target.disabled = true;
+};
+
+// Add event listener
+const chargeMeBtn = document.querySelector("#charge-me");
+chargeMeBtn.addEventListener('click', disableButton)
 
 /**
  * Challenge 3: Show comments for the news story.
@@ -28,12 +44,24 @@
  * If the comments are open, change the button text from "View Comments" to "Hide Comments".
  */
 
+
+const viewCommentsBtn = document.querySelector("#view-comments")
+viewCommentsBtn.addEventListener("click", (event) => {
+  const comments = document.querySelector("#comments-card")
+  comments.classList.toggle("hidden")
+});
 /**
  * Challenge 4: Rendering what a user is typing on the page.
  *
  * When the user types inside the textbook labeled "Enter mystery text here",
  * it should display what the user is typing in the <div></div> tags below.
  */
+
+ const mysteryTextField = document.querySelector("#mystery-text")
+ mysteryTextField.addEventListener("input", (event) => {
+   const displayMysteryText = document.querySelector("#display-mystery-text")
+   displayMysteryText.textContent = mysteryTextField.value;
+ })
 
 /**
  * Challenge 5: Display the results of the world's most pointless search engine.
@@ -47,6 +75,16 @@
  * The exercise must be completed with a form handler
  * and you must prevent the page from refreshing when the form is submitted.
  */
+
+
+document.querySelector("#search-form").addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const searchInput = document.querySelector("#search-input");  
+  let message = `No results for "${searchInput.value}" found`
+
+  document.querySelector("#display-search").textContent = message;
+});
 
 /**
  * Challenge 6: Agree to the terms and conditions
