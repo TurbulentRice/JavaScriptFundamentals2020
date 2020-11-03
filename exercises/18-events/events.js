@@ -96,6 +96,14 @@ document.querySelector("#search-form").addEventListener("submit", (event) => {
  *
  * To start, you will need to hide some element on the page and change the input's classes.
  */
+const terms = document.querySelector("#terms");
+const termsForm = document.querySelector("#termsForm");
+termsForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const good = document.querySelector("#termsTrue")
+  const bad = document.querySelector("#termsFalse")
+  terms.checked ? good.classList.remove("hidden") : bad.classList.remove("hidden")
+})
 
 /**
  * Challenge 7: Add pagination to the student table.
@@ -107,3 +115,29 @@ document.querySelector("#search-form").addEventListener("submit", (event) => {
  * - Clicking on the "«" and "1" buttons should show everything in data-group="1" and hide everything in data-group="2".
  * - Clicking on the "2" and "»" buttons should show everything in data-group="2" and hide everything in data-group="1".
  */
+
+// All student table entries
+const tableEntries = document.querySelectorAll("[data-group]")
+
+// Hide group 2, show group 1
+const showGroup1 = () => {
+  tableEntries.forEach((student) => {
+    student.getAttribute("data-group") == 2 ? student.classList.add("hidden") : student.classList.remove("hidden")
+  })
+}
+
+// Hide group 1, show group 2
+const showGroup2 = () => {
+  tableEntries.forEach((student) => {
+    student.getAttribute("data-group") == 1 ? student.classList.add("hidden") : student.classList.remove("hidden")
+  })
+};
+
+// Inititally, show only first 10 students
+showGroup1()
+
+// When button is pressed, change
+const one = document.querySelectorAll("[data-group=pg1]")
+one.forEach((btn) => btn.addEventListener("click", showGroup1))
+const two = document.querySelectorAll("[data-group=pg2]")
+two.forEach((btn) => btn.addEventListener("click", showGroup2))
