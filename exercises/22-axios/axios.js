@@ -15,3 +15,49 @@
  *
  * Use the AXIOS library to make AJAX requests.
  */
+
+
+// Global constants
+const apiURL = "https://rickandmortyapi.com/api/character"
+const dropdown = document.querySelector("#dropdown")
+const mainImage = document.querySelector("#get-schwifty")
+
+// Add an option to dropdown
+const addOption = (charName) => {
+  let newOption = document.createElement("option")
+  newOption.textContent = charName;
+  dropdown.appendChild(newOption)
+}
+
+
+// Get characters and populate dropdown with characters
+// Get the character list from API, add options
+let characters;
+axios.get(apiURL)
+  .then(response => response.data.results)
+  .then(charList => {
+    characters = charList;
+    charList.forEach(char => addOption(char.name));
+  })
+  .catch(error => console.log(error))
+
+
+// Add event listener to dropdown
+dropdown.addEventListener('change', () => {
+  let selectedChar = dropdown.value;
+  console.log(selectedChar)
+  if (selectedChar === "Select a character") return;
+
+  
+  selectedChar = characters[characters.findIndex(char => char.name === selectedChar)]
+  
+  
+  // get the associated image
+  let charImage = selectedChar.image
+  console.log(charImage)
+  mainImage.src = charImage
+
+})
+
+
+
