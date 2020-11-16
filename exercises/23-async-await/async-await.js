@@ -13,9 +13,13 @@ const quoteBox = document.querySelector("#quote")
 const quoteBtn = document.querySelector("#get-quote")
 
 const getQuote = async () => {
-  let response = await fetch('https://ron-swanson-quotes.herokuapp.com/v2/quotes')
-  let newQuote = await response.json()
-  quoteBox.textContent = newQuote
+  try {
+    let response = await fetch('https://ron-swanson-quotes.herokuapp.com/v2/quotes')
+    let newQuote = await response.json()
+    quoteBox.textContent = newQuote
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 quoteBtn.addEventListener('click', getQuote)
