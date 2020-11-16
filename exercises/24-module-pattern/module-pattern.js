@@ -22,7 +22,11 @@
 const { studentGrades } = require("./students");
 
 const TeacherGradeBook = (() => {
-  return {};
+  return {
+    debug: () => studentGrades,
+    getFailingStudents: () => studentGrades.filter(student => (student.grades.reduce((a, b) => a + b) / student.grades.length) < 65),
+    getPassingStudents: () => studentGrades.filter(student => (student.grades.reduce((a, b) => a + b) / student.grades.length) > 65),
+  };
 })();
 
 module.exports = {
