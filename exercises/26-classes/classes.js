@@ -29,6 +29,20 @@
  * // [ {firstName:'Billy',lastName:'Joel',grades:[20,30,40,50]}, {firstName:'Luke',lastName:'Skywalker', grades:[0,0,0,100]} ]
  */
 
+class TeacherGradeBook {
+  constructor(students) {
+    this.students = [...students]
+  }
+
+  getPassingStudents() {
+    return students.filter(student => (student.grades.reduce((a, b) => a + b) / student.grades.length) > 65)
+  }
+
+  getFailingStudents() {
+    return students.filter(student => (student.grades.reduce((a, b) => a + b) / student.grades.length) < 65)
+  }
+}
+
 /**
  * Ignore everything below this line. This is for the tests.
  */
